@@ -2,8 +2,6 @@ name: Merge Queue
 
 on:
   merge_group:
-    types:
-      - "checks_requested"
 
 jobs:
   merge:
@@ -12,5 +10,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: echo "Hello from Merge Queue"
+      - run: echo ${{ github.event_name }}
       - run: echo "Hello from the Merge Queue again!"
       - run: exit 1
