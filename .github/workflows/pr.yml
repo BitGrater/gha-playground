@@ -17,6 +17,7 @@ jobs:
     runs-on: ubuntu-22.04
     if: github.event_name == 'merge_group'
     steps:
+      - run: echo "first step"
       - run: |
           echo "Hello from Merge Group!"
           exit 1
