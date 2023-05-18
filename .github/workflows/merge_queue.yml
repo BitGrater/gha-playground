@@ -12,3 +12,4 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: echo "Hello from Merge Queue"
+      - run: exit 1
