@@ -20,4 +20,3 @@ jobs:
       - run: echo "first step"
       - run: |
           echo "Hello from Merge Group!"
-          exit 1
