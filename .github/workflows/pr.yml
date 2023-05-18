@@ -3,16 +3,19 @@ name: PR
 on:
   pull_request:
   merge_group:
-    types: ["checks_requested"]
 
 jobs:
-  test:
-    name: Test PR Checks
+  pr_checks:
+    name: :PR Checks
     runs-on: ubuntu-22.04
     steps:
-
       - uses: actions/checkout@v3
-      - run: echo "Hello from Merge Queue!"
-        if: github.event_name == 'merge_group'
-      - run: exit 1
-        if: github.event_name == 'merge_group'
+
+  merge_group:
+    name: Merge Group
+    runs-on: ubuntu-22.04
+    if: github.event_name == 'merge_group'
+    steps:
+      - run: |
+          echo "Hello from Merge Group!"
+          exit 1
