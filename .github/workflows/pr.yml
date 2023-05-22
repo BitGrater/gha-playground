@@ -18,6 +18,11 @@ jobs:
       - name: Check github.head_ref value
         run: echo ${{ github.head_ref }}
 
+      - name: Print GitHub Context
+        run: echo $GITHUB_CTX
+        env:
+          GITHUB_CTX: ${{ toJson(github) }}
+
   merge_group:
     name: Merge Group
     runs-on: ubuntu-22.04
@@ -30,3 +35,8 @@ jobs:
 
       - name: Check github.head_ref value
         run: echo ${{ github.head_ref }}
+      
+      - name: Print GitHub Context
+        run: echo $GITHUB_CTX
+        env:
+          GITHUB_CTX: ${{ toJson(github) }}
