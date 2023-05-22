@@ -12,11 +12,21 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: Check github.ref_name value
+        run: echo ${{ github.ref_name }}
+
+      - name: Check github.head_ref value
+        run: echo ${{ github.head_ref }}
+
   merge_group:
     name: Merge Group
     runs-on: ubuntu-22.04
     if: github.event_name == 'merge_group'
     steps:
-      - run: echo "first step"
-      - run: |
-          echo "Hello from Merge Group!"
+      - run: echo "Hello from Merge Group!"
+
+      - name: Check github.ref_name value
+        run: echo ${{ github.ref_name }}
+
+      - name: Check github.head_ref value
+        run: echo ${{ github.head_ref }}
