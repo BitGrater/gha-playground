@@ -18,10 +18,10 @@ jobs:
       - name: Check github.head_ref value
         run: echo ${{ github.head_ref }}
 
-      - name: Checkout to ref_name
-        uses: actions/checkout@v3
-        with:
-          ref: ${{ github.ref_name }}
+      - name: Print GitHub Context
+        run: echo $GITHUB_CTX
+        env:
+          GITHUB_CTX: ${{ toJson(github) }}
 
   merge_group:
     name: Merge Group
@@ -36,7 +36,7 @@ jobs:
       - name: Check github.head_ref value
         run: echo ${{ github.head_ref }}
       
-      - name: Checkout to ref_name
-        uses: actions/checkout@v3
-        with:
-          ref: ${{ github.ref_name }}
+      - name: Print GitHub Context
+        run: echo $GITHUB_CTX
+        env:
+          GITHUB_CTX: ${{ toJson(github) }}
