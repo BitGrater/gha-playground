@@ -2,41 +2,11 @@ name: PR
 
 on:
   pull_request:
-  merge_group:
-
 
 jobs:
   pr_checks:
-    name: :PR Checks
+    name: PR Checks
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v3
-
-      - name: Check github.ref_name value
-        run: echo ${{ github.ref_name }}
-
-      - name: Check github.head_ref value
-        run: echo ${{ github.head_ref }}
-
-      - name: Print GitHub Context
-        run: echo $GITHUB_CTX
-        env:
-          GITHUB_CTX: ${{ toJson(github) }}
-
-  merge_group:
-    name: Merge Group
-    runs-on: ubuntu-22.04
-    if: github.event_name == 'merge_group'
-    steps:
-      - run: echo "Hello from Merge Group!"
-
-      - name: Check github.ref_name value
-        run: echo ${{ github.ref_name }}
-
-      - name: Check github.head_ref value
-        run: echo ${{ github.head_ref }}
-      
-      - name: Print GitHub Context
-        run: echo $GITHUB_CTX
-        env:
-          GITHUB_CTX: ${{ toJson(github) }}
+      - run: echo "Example PR Check - automatically triggered"
