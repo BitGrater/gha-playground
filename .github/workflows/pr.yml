@@ -16,5 +16,5 @@ jobs:
             github.request('POST /repos/BitGrater/gha-playground/check-runs', {
               name: 'merge_checks',
               head_sha: context.head_sha,
-              status: queued
+              status: 'queued'
             })
