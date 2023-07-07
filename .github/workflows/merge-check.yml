@@ -16,6 +16,7 @@ jobs:
           script: |
             const { RUN_ID } = process.env;
             const commit_sha = context.payload.client_payload.pull_request.head_sha;
+            console.log(commit_sha)
             github.request('POST /repos/BitGrater/gha-playground/check-runs', {
               name: 'Merge Checks',
               head_sha: commit_sha,
