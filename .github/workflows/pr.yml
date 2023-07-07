@@ -11,7 +11,7 @@ jobs:
       checks: write
     steps:
       - uses: actions/checkout@v3
-      - run: echo "Example PR Check - automatically triggered"
+      - run: echo "$GITHUB_SHA"
       - uses: actions/github-script@v6
         with:
           script: |
