@@ -13,7 +13,7 @@ jobs:
       - uses: actions/github-script@v6
         with:
           script: |
-            github.request(POST '/repos/BitGrater/gha-playground/check-runs', {
+            github.request('POST /repos/BitGrater/gha-playground/check-runs', {
               name: 'merge_checks',
               head_sha: $GITHUB_SHA,
               status: queued
