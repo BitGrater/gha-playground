@@ -2,19 +2,25 @@ name: PR
 
 on:
   pull_request:
+  workflow_dispatch:
 
 jobs:
   pr_checks:
     name: PR Checks
     runs-on: ubuntu-22.04
+    permissions:
+      checks: write
     steps:
       - uses: actions/checkout@v3
-      - run: echo "Example PR Check - automatically triggered"
-      - uses: actions/github-script@
+      - run: echo "$GITHUB_SHA"
+      - uses: actions/github-script@v6
         with:
           script: |
-            github.request(POST '/repos/BitGrater/gha-playground/check-runs', {
-              name: 'merge_checks',
-              head_sha: $GITHUB_SHA,
-              status: queued
+            const { GITHUB_SHA } = process.env
+            console.log({ github, context })
+            github.request('POST /repos/BitGrater/gha-playground/check-runs', {
+              name: 'Merge',
+              head_sha: context.payload.after,
+              status: 'completed',
+              conclusion: 'success'
             })
