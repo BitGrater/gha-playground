@@ -1,0 +1,17 @@
+name: Merge Check
+
+on:
+  repository_dispatch:
+    types: [merge-command]
+
+jobs:
+  merge:
+    name: Merge Checks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: echo 'Merge command called!'
+      - uses: actions/github-script@v6
+        with:
+          script: |
+            console.log({github, context})
