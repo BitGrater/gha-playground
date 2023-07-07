@@ -12,7 +12,6 @@ jobs:
       - run: echo "Example PR Check - automatically triggered"
       - uses: actions/github-script@v6
         with:
-          github-token: ${{ secrets.GH_PAT }}
           script: |
             github.request('POST /repos/BitGrater/gha-playground/check-runs', {
               name: 'merge_checks',
