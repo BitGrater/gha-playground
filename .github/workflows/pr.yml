@@ -19,5 +19,6 @@ jobs:
             github.request('POST /repos/BitGrater/gha-playground/check-runs', {
               name: 'Merge',
               head_sha: GITHUB_SHA,
-              status: 'completed'
+              status: 'completed',
+              conclusion: 'success'
             })
