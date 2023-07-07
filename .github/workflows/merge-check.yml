@@ -14,5 +14,4 @@ jobs:
       - uses: actions/github-script@v6
         with:
           script: |
-            console.log({github, context})
-            console.log(context.payload.client_payload)
+            console.log(context.payload.client_payload.pull_request.head.sha)
