@@ -10,3 +10,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: echo "Example PR Check - automatically triggered"
+      - uses: actions/github-script@
+        with:
+          script: |
+            github.request(POST '/repos/BitGrater/gha-playground/check-runs', {
+              name: 'merge_checks',
+              head_sha: $GITHUB_SHA,
+              status: queued
+            })
