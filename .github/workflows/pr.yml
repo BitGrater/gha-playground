@@ -17,7 +17,7 @@ jobs:
           script: |
             const { GITHUB_SHA } = process.env
             github.request('POST /repos/BitGrater/gha-playground/check-runs', {
-              name: 'merge_checks',
+              name: 'Merge',
               head_sha: GITHUB_SHA,
-              status: 'queued'
+              status: 'completed'
             })
