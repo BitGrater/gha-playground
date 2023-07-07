@@ -14,4 +14,6 @@ jobs:
       - uses: actions/github-script@v6
         with:
           script: |
-            console.log({github, context.payload.client_payload})
+            console.log({github, context})
+            const context = {context}
+            console.log(context.payload.client_payload)
