@@ -12,15 +12,14 @@ jobs:
       checks: write
     steps:
       - uses: actions/checkout@v3
-      - run: echo "$GITHUB_SHA"
-      - uses: actions/github-script@v6
-        with:
-          script: |
-            const { GITHUB_SHA } = process.env
-            console.log({ github, context })
-            github.request('POST /repos/BitGrater/gha-playground/check-runs', {
-              name: 'Merge',
-              head_sha: context.payload.after,
-              status: 'completed',
-              conclusion: 'success'
-            })
+      # - uses: actions/github-script@v6
+      #   with:
+      #     script: |
+      #       const { GITHUB_SHA } = process.env
+      #       console.log({ github, context })
+      #       github.request('POST /repos/BitGrater/gha-playground/check-runs', {
+      #         name: 'Merge',
+      #         head_sha: context.payload.after,
+      #         status: 'completed',
+      #         conclusion: 'success'
+      #       })
