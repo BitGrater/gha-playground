@@ -7,6 +7,8 @@ jobs:
   pr_checks:
     name: PR Checks
     runs-on: ubuntu-22.04
+    permissions:
+      checks: write
     steps:
       - uses: actions/checkout@v3
       - run: echo "Example PR Check - automatically triggered"
