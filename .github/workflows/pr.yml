@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: echo "Example PR Check - automatically triggered"
-      - uses: actions/github-script@
+      - uses: actions/github-script@v6
         with:
           script: |
             github.request(POST '/repos/BitGrater/gha-playground/check-runs', {
