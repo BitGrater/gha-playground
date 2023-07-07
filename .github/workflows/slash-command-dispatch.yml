@@ -8,11 +8,12 @@ jobs:
   slash-command-dispatch:
     name: Slash Command Dispatch
     runs-on: ubuntu-latest
+    permissions: write-all
     steps:
 
       - uses: actions/checkout@v3
       - uses: peter-evans/slash-command-dispatch@v3
         with:
-          token: ${{ secrets.GH_PAT }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           commands: |
             merge
