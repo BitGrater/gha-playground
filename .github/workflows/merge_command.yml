@@ -25,6 +25,11 @@ jobs:
 
       - name: Dump the client payload context
         env:
+          PAYLOAD_CONTEXT: ${{ toJson(github) }}
+        run: echo "$PAYLOAD_CONTEXT"
+
+      - name: Dump the client payload context
+        env:
           PAYLOAD_CONTEXT: ${{ toJson(github.event) }}
         run: echo "$PAYLOAD_CONTEXT"
 
