@@ -22,3 +22,8 @@ jobs:
           echo "Merge checks are starting..."
           echo "Merge checks successful!"
           exit 0
+
+      - name: Dump the client payload context
+        env:
+          PAYLOAD_CONTEXT: ${{ toJson(github.event.client_payload) }}
+        run: echo "$PAYLOAD_CONTEXT"
