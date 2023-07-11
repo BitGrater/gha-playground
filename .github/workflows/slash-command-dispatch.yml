@@ -16,6 +16,6 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           commands: |
-            merge
+            integrate
           dispatch-type: workflow
           permission: none
