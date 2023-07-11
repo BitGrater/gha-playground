@@ -1,0 +1,23 @@
+name: Command Dispatch
+
+on:
+  issue_comment:
+    types:
+      - created
+
+jobs:
+  dispatch_merge_checks:
+    name: Merge Checks Requested
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Dispatch
+        uses: peter-evans/slash-command-dispatch@v3
+        with:
+          commands: merge
+          permission: none
+          issue-type: pull-request
+          dispatch-type: workflow
+          event-type-suffix: "_command"
+          static-args: |
+            pull-request-id=${{ github.event.issue.id }}

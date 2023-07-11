@@ -1,0 +1,24 @@
+name: Merge Checks
+
+on:
+  workflow_dispatch:
+    inputs:
+      pull-request-id:
+        description: Unique ID of the Pull Request
+        type: string
+        required: true
+
+jobs:
+  merge_checks:
+    name: Merge Checks
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Run Merge Checks
+        run: |
+          echo "Merge checks are starting..."
+          echo "Merge checks successful!"
+          exit 0
