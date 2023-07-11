@@ -26,7 +26,10 @@ jobs:
         with:
           comment-id: ${{ github.event.client_payload.github.payload.comment.id }}
           body: |
+            
             **Edit:** Started merge checks: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          reactions:
+            crossed_fingers
 
       - name: Checkout
         uses: actions/checkout@v3
