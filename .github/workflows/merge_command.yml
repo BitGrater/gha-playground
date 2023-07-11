@@ -12,6 +12,14 @@ jobs:
     permissions: write-all
     steps:
 
+      - name: print
+        run: |
+          echo ${{ github.ref }}
+          echo ${{ github.sha }}
+          echo ${{ github.event.client_payload.pull_request.head.ref }}
+          echo ${{ github.event.client_payload.pull_request.head.sha }}
+          echo ${{ github.event.client_payload.pull_request.head.ref || github.ref }}
+
       - name: Update status checks
         uses: Sibz/github-status-action@v1
         with: 
@@ -22,21 +30,19 @@ jobs:
           sha: ${{ github.event.client_payload.pull_request.head.sha }}
           target_url: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
 
-      - run: echo ${{ toJson(github.event_name) }}
-
       - name: Update comment
+        if: github.event_name == 'repository_dispatch'
         uses: peter-evans/create-or-update-comment@v3
         with:
           comment-id: ${{ github.event.client_payload.github.payload.comment.id }}
           body: |
             Merge Checks available at: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
-          reactions:
-            crossed_fingers
+          reactions: crossed_fingers
 
       - name: Checkout
         uses: actions/checkout@v3
         with:
-          ref: ${{ github.event.client_payload.pull_request.head.ref }}
+          ref: ${{ github.event.client_payload.pull_request.head.ref || github.ref }}
 
       - name: Run Merge Checks
         run: |
