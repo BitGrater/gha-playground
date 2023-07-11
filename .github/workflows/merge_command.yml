@@ -10,6 +10,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
+      - name: Update status checks
+        uses: Sibz/github-status-action@v1
+        with: 
+          authToken: ${{ github.token }}
+          context: 'Merge Checks'
+          description: 'Merge Checks'
+          state: ${{ job.status }}
+          sha: ${{ github.event.client_payload.pull_request.head.ref }}
+          target_url: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
       - name: Checkout
         uses: actions/checkout@v3
         with:
@@ -21,7 +31,13 @@ jobs:
           echo "Merge checks successful!"
           exit 0
 
-      - name: Dump the client payload context
-        env:
-          PAYLOAD_CONTEXT: ${{ toJson(github.event.client_payload) }}
-        run: echo "$PAYLOAD_CONTEXT"
+      - name: Update status checks
+        uses: Sibz/github-status-action@v1
+        if: always()
+        with: 
+          authToken: ${{ github.token }}
+          context: 'Merge Checks'
+          description: 'Merge Checks'
+          state: ${{ job.status }}
+          sha: ${{ github.event.client_payload.pull_request.head.ref }}
+          target_url: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
