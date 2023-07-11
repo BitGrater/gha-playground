@@ -30,7 +30,7 @@ jobs:
         run: |
           echo "Merge checks are starting..."
           echo "Merge checks successful!"
-          exit 0
+          exit 1
 
       - name: Update status checks
         uses: Sibz/github-status-action@v1
