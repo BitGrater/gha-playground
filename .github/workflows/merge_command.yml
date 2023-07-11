@@ -22,7 +22,7 @@ jobs:
           sha: ${{ github.event.client_payload.pull_request.head.sha }}
           target_url: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
 
-      - run: echo ${{ toJson(github.event.type) }}
+      - run: echo ${{ toJson(github.event_name) }}
 
       - name: Update comment
         uses: peter-evans/create-or-update-comment@v3
