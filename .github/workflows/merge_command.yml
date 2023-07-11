@@ -10,15 +10,11 @@ jobs:
     name: Merge Checks
     runs-on: ubuntu-latest
     permissions:
-      discussions: write
+      issues: write
     env:
       SHA: ${{ github.event.client_payload.pull_request.head.sha || github.sha }}
       REF: ${{ github.event.client_payload.pull_request.head.ref || github.ref }}
     steps:
-
-      - run: |
-          echo $SHA
-          echo $REF
 
       - name: Update status checks
         uses: Sibz/github-status-action@v1
