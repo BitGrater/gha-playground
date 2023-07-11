@@ -15,7 +15,7 @@ jobs:
     steps:
 
       - name: SHA
-        run: $GITHUB_SHA
+        run: echo $GITHUB_SHA
 
       - name: Dispatch
         uses: peter-evans/slash-command-dispatch@v3
