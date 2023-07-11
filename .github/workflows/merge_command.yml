@@ -1,12 +1,8 @@
 name: Merge Checks
 
 on:
-  workflow_dispatch:
-    inputs:
-      pull-request-id:
-        description: Unique ID of the Pull Request
-        type: string
-        required: true
+  repository_dispatch:
+    types: [merge-check-command]
 
 jobs:
   merge_checks:
@@ -22,16 +18,6 @@ jobs:
           echo "Merge checks are starting..."
           echo "Merge checks successful!"
           exit 0
-
-      - name: Dump the client payload context
-        env:
-          PAYLOAD_CONTEXT: ${{ toJson(github) }}
-        run: echo "$PAYLOAD_CONTEXT"
-
-      - name: Dump the client payload context
-        env:
-          PAYLOAD_CONTEXT: ${{ toJson(github.event) }}
-        run: echo "$PAYLOAD_CONTEXT"
 
       - name: Dump the client payload context
         env:
