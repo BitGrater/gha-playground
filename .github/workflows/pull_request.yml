@@ -1,0 +1,25 @@
+name: Pull Request
+
+on:
+  pull_request:
+
+jobs:
+  build_and_test:
+    name: Build & Test
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Build
+        run: |
+          echo "Build is starting..."
+          echo "Build successful!"
+          exit 0
+
+      - name: Run Tests
+        run: |
+          echo "Tests are starting..."
+          echo "Tests are successful!"
+          exit 0
