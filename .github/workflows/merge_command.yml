@@ -10,7 +10,7 @@ jobs:
     name: Merge Checks
     runs-on: ubuntu-latest
     permissions:
-      pull-requests: write
+      checks: write
     env:
       SHA: ${{ github.event.client_payload.pull_request.head.sha || github.sha }}
       REF: ${{ github.event.client_payload.pull_request.head.ref || github.ref }}
