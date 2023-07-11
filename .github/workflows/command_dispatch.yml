@@ -9,9 +9,7 @@ jobs:
   dispatch_merge_checks:
     name: Merge Checks Requested
     runs-on: ubuntu-latest
-    permissions:
-      pull-requests: write
-      actions: write
+    permissions: write-all
     steps:
 
       - name: Dispatch
