@@ -14,12 +14,6 @@ jobs:
       actions: write
     steps:
 
-      - name: SHA
-        run: echo $GITHUB_SHA
-
-      - name: Dump
-        run: echo ${{ toJson(github.event) }}
-
       - name: Dispatch
         uses: peter-evans/slash-command-dispatch@v3
         with:
