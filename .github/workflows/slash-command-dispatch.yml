@@ -19,3 +19,5 @@ jobs:
             integrate
           dispatch-type: workflow
           permission: none
+          static-args: |
+            comment-id=${{ github.event.comment.id }}

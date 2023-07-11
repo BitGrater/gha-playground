@@ -2,12 +2,22 @@ name: Integrate
 
 on:
   workflow_dispatch:
+    inputs:
+      comment-id:
+        description: ID of the comment which triggered this workflow
+        required: true
+        type: string
 
 jobs:
   integrate:
     name: Integrate
     runs-on: ubuntu-latest
+    permissions: write-all
     steps:
-
+      - uses: peter-evans/create-or-update-comment@v2
+        with:
+          comment-id: ${{ inputs.comment-id }}
+          body: |
+            Starting integrate workflow
       - uses: actions/checkout@v3
       - run: echo "Hello from Integrate!"
