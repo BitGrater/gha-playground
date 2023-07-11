@@ -21,6 +21,13 @@ jobs:
           sha: ${{ github.event.client_payload.pull_request.head.sha }}
           target_url: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
 
+      - name: Update comment
+        uses: peter-evans/create-or-update-comment@v3
+        with:
+          comment-id: ${{ github.event.client_payload.github.payload.comment.id }}
+          body: |
+            **Edit:** Started merge checks: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
       - name: Checkout
         uses: actions/checkout@v3
         with:
