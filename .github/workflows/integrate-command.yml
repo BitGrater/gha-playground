@@ -16,8 +16,7 @@ jobs:
     steps:
       - uses: peter-evans/create-or-update-comment@v2
         with:
-          comment-id: ${{ inputs.comment-id }}
           body: |
-            Starting integrate workflow
+            Starting integrate workflow :rocket:
       - uses: actions/checkout@v3
       - run: echo "Hello from Integrate!"
