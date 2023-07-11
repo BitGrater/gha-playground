@@ -21,5 +21,6 @@ jobs:
           issue-type: pull-request
           dispatch-type: workflow
           event-type-suffix: "_command"
+          token: ${{ secrets.GITHUB_TOKEN }}
           static-args: |
             pull-request-id=${{ github.event.issue.id }}
