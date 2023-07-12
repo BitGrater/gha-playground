@@ -16,6 +16,9 @@ jobs:
     permissions: write-all
     steps:
 
+      - run: echo $PAYLOAD
+        env: ${{ toJson(github.event.client_payload) }}
+
       - name: Update status checks
         uses: Sibz/github-status-action@v1
         with: 
