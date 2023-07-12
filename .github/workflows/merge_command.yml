@@ -27,6 +27,7 @@ jobs:
           target_url: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
 
       - name: Update comment
+        id: comment
         if: github.event_name == 'repository_dispatch'
         uses: peter-evans/create-or-update-comment@v3
         with:
@@ -64,3 +65,23 @@ jobs:
           state: ${{ job.status }}
           sha: ${{ env.SHA }}
           target_url: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
+      - name: Update Comment in case of failure
+        if: github.event_name == 'repository_dispatch' && (failure() || cancelled())
+        uses: peter-evans/create-or-update-comment@v3
+        with:
+          comment-id: ${{ steps.comment.outputs.comment-id }}
+          body: >-
+            Verdict: FAILED
+
+            > I bear tidings from our endeavor. :mage:
+              
+            > Much like the Balrog of Morgoth, your pull request stood defiant in the face of our merge checks. :fire:
+              
+            > Alas, for now, it seems **'You shall not pass!'** rings true. But fret not! Every hero stumbles, every quest has its trials. :ring:
+              
+            > Mend your code with the
+            > - wisdom of the Elves
+            > - strength of the Dwarves
+            > - and courage of Men
+            > and return it to the anvil! We shall overcome this, together. Onwards to victory, for not all those who wander are lost! :eagle:"
