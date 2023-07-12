@@ -18,7 +18,7 @@ jobs:
             const checkRuns = await github.request('/repos/BitGrater/gha-playground/commits/{ref}/check-runs', {
               ref: SHA_BEFORE
             });
-            console.log(checkRuns);
+            console.log(checkRuns.data);
         env:
           SHA_BEFORE: ${{ github.event.before }}
 
