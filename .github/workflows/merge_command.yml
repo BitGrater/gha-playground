@@ -86,6 +86,9 @@ jobs:
             We shall overcome this, together. Onwards to victory, for not all those who wander are lost! :eagle:"
 
             > Verdict: :stop_sign: **FAILED** :stop_sign:
+          reactions: |
+            -1
+            confused
 
       - name: Update Comment in case of failure
         if: github.event_name == 'repository_dispatch' && success()
@@ -108,3 +111,6 @@ jobs:
             Let the eagles soar and the trumpets sound in your honor! Onward to the next great quest!
 
             > Verdict: :heavy_check_mark: **SUCCESS** :heavy_check_mark:
+          reactions: |
+            +1
+            hooray
