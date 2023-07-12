@@ -73,6 +73,8 @@ jobs:
         with:
           comment-id: ${{ steps.comment.outputs.comment-id }}
           body: >-
+            ***
+
             I bear tidings from our endeavor. :mage:
 
             Much like the Balrog of Morgoth, your pull request stood defiant in the face of our merge checks. :fire:
