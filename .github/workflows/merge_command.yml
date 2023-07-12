@@ -54,7 +54,7 @@ jobs:
         run: |
           echo "Merge checks are starting..."
           echo "Merge checks successful!"
-          exit 1
+          exit 0
 
       - name: Update status checks
         uses: Sibz/github-status-action@v1
@@ -85,4 +85,26 @@ jobs:
 
             We shall overcome this, together. Onwards to victory, for not all those who wander are lost! :eagle:"
 
-            > Verdict: :stop_sign: FAILED :stop_sign:
+            > Verdict: :stop_sign: **FAILED** :stop_sign:
+
+      - name: Update Comment in case of failure
+        if: github.event_name == 'repository_dispatch' && success()
+        uses: peter-evans/create-or-update-comment@v3
+        with:
+          comment-id: ${{ steps.comment.outputs.comment-id }}
+          body: >-
+            ***
+
+            I bring good news from the realms of Middle-Earth! :mage:
+
+            Like Frodo and Sam's victorious journey to Mount Doom, your pull request has braved the fiery depths of our merge checks. :fire:
+  
+            And behold, 'You shall pass!' rings loud and clear! :ring:
+
+            Your code, now tried and true, stands ready to join the develop branch in the legendary halls of the repository.
+
+            Celebrate this triumph! For even the smallest pull request can change the course of the future. :eagle:
+
+            Let the eagles soar and the trumpets sound in your honor! Onward to the next great quest!
+
+            > Verdict: :heavy_check_mark: **SUCCESS** :heavy_check_mark:
