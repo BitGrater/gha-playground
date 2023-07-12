@@ -7,9 +7,21 @@ jobs:
   build_and_test:
     name: Build & Test
     runs-on: ubuntu-latest
+    permissions: write-all
     steps:
 
       - run: echo ${{ toJson(github.event) }}
+
+      - uses: actions/github-script@v6
+        if: github.event.action == 'synchronize'
+        with:
+          script: |
+            const { SHA_BEFORE } = process.env;
+            github.client('/repos/BitGrater/gha-playground/commits/{ref}/check-runs', {
+              ref: SHA_BEFORE
+            });
+        env:
+          SHA_BEFORE: ${{ github.event.before }}
 
       - name: Checkout
         uses: actions/checkout@v3
