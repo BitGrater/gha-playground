@@ -30,7 +30,7 @@ jobs:
         if: github.event_name == 'repository_dispatch'
         uses: peter-evans/create-or-update-comment@v3
         with:
-          issue-id: ${{ github.event.client_payload.pull_request.number }}
+          issue-number: ${{ github.event.client_payload.pull_request.number }}
           body: >-
             In the ballet of code, a Pull Request in hand :woman_dancing:
             Brave the dance, watch your status expand. :crossed_fingers:
