@@ -32,15 +32,15 @@ jobs:
         with:
           issue-number: ${{ github.event.client_payload.pull_request.number }}
           body: >-
-            Greetings, brave soul! Your mystical `/merge-check` command has echoed throughout the lands of Middle-Earth! :mage:
+            Merge checks started: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
 
-            As Gandalf at the Bridge of Khazad-dûm, I stand ready to unleash a storm of **Merge Checks** upon the Pull Request you've masterfully forged. :fire:
+            > Greetings, brave soul! Your mystical `/merge-check` command has echoed throughout the lands of Middle-Earth! :mage:
 
-            Let's see if this code shall pass, or 'You shall not pass!' will be the lament of our endeavor. :ring:
+            > As Gandalf at the Bridge of Khazad-dûm, I stand ready to unleash a storm of **Merge Checks** upon the Pull Request you've masterfully forged. :fire:
 
-            Keep a keen eye here for the unfolding tale of success or the need for further journey! :eagle:
+            > Let's see if this code shall pass, or 'You shall not pass!' will be the lament of our endeavor. :ring:
 
-            > Merge Checks: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+            > Keep a keen eye here for the unfolding tale of success or the need for further journey! :eagle:
           reactions: crossed_fingers
 
       - name: Checkout
