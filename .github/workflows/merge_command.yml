@@ -16,11 +16,6 @@ jobs:
     permissions: write-all
     steps:
 
-      - name: print
-        run: |
-          echo $SHA
-          echo $REF
-
       - name: Update status checks
         uses: Sibz/github-status-action@v1
         with: 
