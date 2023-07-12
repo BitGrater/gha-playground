@@ -10,8 +10,6 @@ jobs:
     permissions: write-all
     steps:
 
-      - run: echo ${{ toJson(github.event) }}
-
       - uses: actions/github-script@v6
         if: github.event.action == 'synchronize'
         with:
