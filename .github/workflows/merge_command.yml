@@ -33,15 +33,16 @@ jobs:
         with:
           issue-number: ${{ github.event.client_payload.pull_request.number }}
           body: >-
-            Merge checks started: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+            Greetings, brave soul! Your mystical `/merge-check` command has echoed throughout the lands of Middle-Earth! :mage:
 
-            > Greetings, brave soul! Your mystical `/merge-check` command has echoed throughout the lands of Middle-Earth! :mage:
+            As Gandalf at the Bridge of Khazad-dûm, I stand ready to unleash a storm of **Merge Checks** upon the Pull Request you've masterfully forged. :fire:
 
-            > As Gandalf at the Bridge of Khazad-dûm, I stand ready to unleash a storm of **Merge Checks** upon the Pull Request you've masterfully forged. :fire:
+            Let's see if this code shall pass, or 'You shall not pass!' will be the lament of our endeavor. :ring:
 
-            > Let's see if this code shall pass, or 'You shall not pass!' will be the lament of our endeavor. :ring:
+            Keep a keen eye here for the unfolding tale of success or the need for further journey! :eagle:
 
-            > Keep a keen eye here for the unfolding tale of success or the need for further journey! :eagle:
+            > Merge checks started: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
           reactions: crossed_fingers
 
       - name: Checkout
@@ -72,18 +73,14 @@ jobs:
         with:
           comment-id: ${{ steps.comment.outputs.comment-id }}
           body: >-
+            I bear tidings from our endeavor. :mage:
 
-            Verdict: FAILED
+            Much like the Balrog of Morgoth, your pull request stood defiant in the face of our merge checks. :fire:
 
-            > I bear tidings from our endeavor. :mage:
-              
-            > Much like the Balrog of Morgoth, your pull request stood defiant in the face of our merge checks. :fire:
+            Alas, for now, it seems **'You shall not pass!'** rings true. But fret not! Every hero stumbles, every quest has its trials. :ring:
 
-            > Alas, for now, it seems **'You shall not pass!'** rings true. But fret not! Every hero stumbles, every quest has its trials. :ring:
+            Mend your code with the wisdom of the Elves, strength of the Dwarves, and courage of Men and return it to the anvil! :hammer:
 
-            > Mend your code with the
-            > - wisdom of the Elves
-            > - strength of the Dwarves
-            > - and courage of Men
+            We shall overcome this, together. Onwards to victory, for not all those who wander are lost! :eagle:"
 
-            > and return it to the anvil! We shall overcome this, together. Onwards to victory, for not all those who wander are lost! :eagle:"
+            > Verdict: :stop_sign: FAILED :stop_sign:
