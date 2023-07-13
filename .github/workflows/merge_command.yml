@@ -64,20 +64,7 @@ jobs:
         uses: peter-evans/create-or-update-comment@v3
         with:
           comment-id: ${{ steps.comment.outputs.comment-id }}
-          body: >-
-            ***
-
-            I bear tidings from our endeavor. :mage:
-
-            Much like the Balrog of Morgoth, your pull request stood defiant in the face of our merge checks. :fire:
-
-            Alas, for now, it seems **'You shall not pass!'** rings true. But fret not! Every hero stumbles, every quest has its trials. :ring:
-
-            Mend your code with the wisdom of the Elves, strength of the Dwarves, and courage of Men and return it to the anvil! :hammer:
-
-            We shall overcome this, together. Onwards to victory, for not all those who wander are lost! :eagle:"
-
-            > Verdict: :stop_sign: **FAILED** :stop_sign:
+          body-path: .github/messages/merge_check_failed.md
           reactions: |
             -1
             confused
@@ -87,22 +74,7 @@ jobs:
         uses: peter-evans/create-or-update-comment@v3
         with:
           comment-id: ${{ steps.comment.outputs.comment-id }}
-          body: >-
-            ***
-
-            I bring good news from the realms of Middle-Earth! :mage:
-
-            Like Frodo and Sam's victorious journey to Mount Doom, your pull request has braved the fiery depths of our merge checks. :fire:
-  
-            And behold, 'You shall pass!' rings loud and clear! :ring:
-
-            Your code, now tried and true, stands ready to join the develop branch in the legendary halls of the repository.
-
-            Celebrate this triumph! For even the smallest pull request can change the course of the future. :eagle:
-
-            Let the eagles soar and the trumpets sound in your honor! Onward to the next great quest!
-
-            > Verdict: :heavy_check_mark: **SUCCESS** :heavy_check_mark:
+          body-path: .github/messages/merge_check_passed.md
           reactions: |
             +1
             hooray
