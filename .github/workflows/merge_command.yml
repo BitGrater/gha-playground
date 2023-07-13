@@ -16,6 +16,10 @@ jobs:
     permissions: write-all
     steps:
 
+      - run: echo $DUMP
+        env:
+          DUMP: ${{ toJson(github.event.client_payload) }}
+
       - uses: actions/checkout@v3
 
       - name: Update status checks
